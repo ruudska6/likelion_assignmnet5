@@ -40,6 +40,9 @@
         a:hover {
             color: #007bff;
         }
+        .separator {
+            border-top: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -47,10 +50,15 @@
     <table>
         <tr>
             <th>제목</th>
+            <th>내용 미리보기</th>
         </tr>
         {% for blog in blogs %}
             <tr>
                 <td><a href="{% url 'detail' blog.pk %}">{{ blog.title }}</a></td>
+                <td>{{ blog.content|truncatechars:50 }}</td>
+            </tr>
+            <tr class="separator">
+                <td colspan="2"></td>
             </tr>
         {% endfor %}
     </table>
